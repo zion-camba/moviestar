@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Container, Title, Main, Subtitle } from '~/tamagui.config';
 import { getMovieDetails } from '~/services/api';
 import { ScrollView, YStack, H1, Text, Paragraph } from 'tamagui';
+import Animated from 'react-native-reanimated';
 
 type DetailsPageProps = {
   id: string;
@@ -24,12 +25,13 @@ const DetailsPage = ({ id, mediaType }: DetailsPageProps) => {
           source={{
             uri: `https://image.tmdb.org/t/p/w400${movieQuery.data?.backdrop_path}`,
           }}>
-          <Image
+          <Animated.Image
             borderRadius={6}
             source={{
               uri: `https://image.tmdb.org/t/p/w400${movieQuery.data?.poster_path}`,
             }}
             style={{ width: 200, height: 300, margin: 10 }}
+            sharedTransitionTag={`${mediaType === 'movie' ? 'movie' : 'tv'}-${id}`}
           />
         </ImageBackground>
         <YStack p={10} animation={'lazy'} enterStyle={{ opacity: 0, y: 10 }}>

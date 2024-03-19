@@ -3,25 +3,25 @@ import { createInterFont } from '@tamagui/font-inter';
 import { createMedia } from '@tamagui/react-native-media-driver';
 import { shorthands } from '@tamagui/shorthands';
 import { themes, tokens } from '@tamagui/themes';
-import { createTamagui, styled, SizableText, H1, YStack } from 'tamagui';
+import { createTamagui, styled, Text, YStack } from 'tamagui';
 
 const animations = createAnimations({
   bouncy: {
+    type: 'spring',
     damping: 10,
     mass: 0.9,
     stiffness: 100,
-    type: 'spring',
   },
   lazy: {
-    damping: 20,
     type: 'spring',
+    damping: 20,
     stiffness: 60,
   },
   quick: {
+    type: 'spring',
     damping: 20,
     mass: 1.2,
     stiffness: 250,
-    type: 'spring',
   },
 });
 
@@ -30,35 +30,31 @@ const headingFont = createInterFont();
 const bodyFont = createInterFont();
 
 export const Container = styled(YStack, {
-  flex: 1,
   padding: 24,
+  maxWidth: 960,
 });
 
 export const Main = styled(YStack, {
   flex: 1,
+  // maxWidth: 960,
   justifyContent: 'space-between',
-  maxWidth: 960,
 });
 
-export const Title = styled(H1, {
-  color: '#000',
-  size: '$12',
+export const Title = styled(Text, {
+  fontSize: 64,
+  fontWeight: 'bold',
 });
 
-export const Subtitle = styled(SizableText, {
+export const Subtitle = styled(Text, {
   color: '#38434D',
-  size: '$9',
+  fontSize: 36,
 });
 
 export const Button = styled(YStack, {
   alignItems: 'center',
   backgroundColor: '#6366F1',
-  borderRadius: 28,
-  hoverStyle: {
-    backgroundColor: '#5a5fcf',
-  },
+  borderRadius: 24,
   justifyContent: 'center',
-  maxWidth: 500,
   padding: 16,
   shadowColor: '#000',
   shadowOffset: {
@@ -67,9 +63,12 @@ export const Button = styled(YStack, {
   },
   shadowOpacity: 0.25,
   shadowRadius: 3.84,
+  hoverStyle: {
+    backgroundColor: '#5a5fcf',
+  },
 });
 
-export const ButtonText = styled(SizableText, {
+export const ButtonText = styled(Text, {
   color: '#FFFFFF',
   fontSize: 16,
   fontWeight: '600',
