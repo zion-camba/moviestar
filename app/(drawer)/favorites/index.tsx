@@ -14,20 +14,25 @@ const Page = () => {
   return (
     <Main>
       <Container>
-        <ScrollView>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          height={750}
+          contentContainerStyle={{ gap: 14, paddingTop: 16 }}>
           {favorites?.map((fav) => (
             <Link key={fav.id} href={`/(drawer)/favorites/${fav.mediaType}/${fav.id}`}>
               <ListItem
                 theme={'alt2'}
                 title={fav.name}
-                size={'$3'}
+                borderRadius={4}
+                size={'$7'}
                 icon={() => (
                   <Animated.Image
                     source={{ uri: `https://image.tmdb.org/t/p/w500${fav.thumb}` }}
                     style={{ width: 50, height: 50 }}
                     sharedTransitionTag={`${fav.mediaType === 'movie' ? 'movie' : 'tv'}-${fav.id}`}
                   />
-                )}></ListItem>
+                )}
+              />
             </Link>
           ))}
         </ScrollView>

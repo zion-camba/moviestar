@@ -3,7 +3,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { ScrollView, YStack, H1, Text, Paragraph, Button, useTheme } from 'tamagui';
 import Animated from 'react-native-reanimated';
-import { useMMKVBoolean, useMMKVObject } from 'react-native-mmkv';
+import { MMKV, useMMKVBoolean, useMMKVObject } from 'react-native-mmkv';
 
 import { Container, Title, Main, Subtitle } from '~/tamagui.config';
 import { getMovieDetails } from '~/services/api';
