@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-import { Main, Subtitle } from '~/tamagui.config';
+import { Main } from '~/tamagui.config';
 import { getTrending, getSearchResults, getUpcoming } from '~/services/api';
-import MovieCard from '~/components/MovieCard';
 import useDebounce from '~/utils/useDebounce';
 import Header from '~/components/Header';
 import TrendingLists from '~/components/TrendingLists';
+import UpcomingLists from '~/components/UpcomingLists';
+import { ScrollView } from 'tamagui';
 
 const Page = () => {
   const [searchString, setSearchString] = useState('');
@@ -41,7 +42,10 @@ const Page = () => {
         searchString={searchString}
         setSearchString={setSearchString}
       />
-      <TrendingLists searchQuery={searchQuery} trendingQuery={trendingQuery} />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <TrendingLists searchQuery={searchQuery} trendingQuery={trendingQuery} />
+        <UpcomingLists upcomingQuery={upcomingQuery} />
+      </ScrollView>
     </Main>
   );
 };

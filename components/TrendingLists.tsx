@@ -1,9 +1,9 @@
-import { Subtitle } from '~/tamagui.config';
 import { ScrollView, Spinner } from 'tamagui';
-
-import MovieCard from './MovieCard';
-import { TrendingResult } from '~/intrefaces/apiresults';
 import { UseQueryResult } from '@tanstack/react-query';
+
+import TrendingMovieCard from './TrendingMovieCard';
+import { Subtitle } from '~/tamagui.config';
+import { TrendingResult } from '~/intrefaces/apiresults';
 
 type TrendingListsProps = {
   trendingQuery: UseQueryResult<TrendingResult, Error>;
@@ -32,13 +32,17 @@ const TrendingLists = ({ searchQuery, trendingQuery }: TrendingListsProps) => {
         py={40}
         contentContainerStyle={{ gap: 14, paddingLeft: 14 }}>
         {searchQuery.data?.results ? (
-          <>{searchQuery.data?.results.map((item) => <MovieCard key={item.id} movie={item} />)}</>
+          <>
+            {searchQuery.data?.results.map((item) => (
+              <TrendingMovieCard key={item.id} movie={item} />
+            ))}
+          </>
         ) : (
           <>
             {trendingQuery.data?.results && (
               <>
                 {trendingQuery.data?.results.map((item) => {
-                  return <MovieCard key={item.id} movie={item} />;
+                  return <TrendingMovieCard key={item.id} movie={item} />;
                 })}
               </>
             )}
