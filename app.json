@@ -37,6 +37,14 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.anonymous.moviestar"
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "99748997-1c6e-4682-bfad-61c89a0eb306"
+      }
     }
   }
 }
